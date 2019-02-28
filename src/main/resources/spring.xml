@@ -1,12 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
     <!--
     xmlns 即 xml namespace xml 使用的命名空间
     xmlns:xsi 即 xml schema instance xml 遵守的具体规范
     xsi:schemaLocation 本文档 xml 遵守的规范 官方指定
     -->
-    <bean id="helloService" class="com.shsxt.service.HelloService"></bean>
+   <!-- <bean id="helloService" class="com.shsxt.service.HelloService"></bean>
+    <bean id="helloDao" class="com.shsxt.dao.HelloDao"></bean>
+    <bean id="helloController" class="com.shsxt.controller.HelloController"></bean>-->
+
+    <!--<import resource="controller.xml"></import>
+    <import resource="dao.xml"></import>
+    <import resource="service.xml"></import>-->
+    <!--<bean id="hservice" class="com.shsxt.factory.StaticFactory" factory-method="createUserService"></bean>
+    &lt;!&ndash;实例化工厂&ndash;&gt;
+    <bean id="intanceFactory" class="com.shsxt.factory.InstanceFactory"></bean>
+    <bean id="userService" factory-bean="intanceFactory" factory-method="createUserServcie"></bean>-->
+
+
+    <!--set注入-->
+    <!--<bean id="userDao" class="com.shsxt.dao.UserDao"></bean>
+    <bean id="userService" class="com.shsxt.service.UserService">
+
+        <property name="userDao" ref="userDao"></property>
+    </bean>-->
+
+    <!--构造器注入-->
+    <!--<bean id="userDao" class="com.shsxt.dao.UserDao"></bean>
+    <bean id="userService" class="com.shsxt.service.UserService">
+        <constructor-arg ref="userDao"></constructor-arg>
+    </bean>-->
+    <!--<bean id="userDao" class="com.shsxt.dao.UserDao"></bean>
+    <bean id="userService" class="com.shsxt.service.UserService">
+        <property name="userDao" ref="userDao"></property>
+        <property name="age" value="18"></property>
+        <property name="name" value="zhangsan"></property>
+    </bean>-->
+    <!--<bean id="userDao" class="com.shsxt.dao.UserDao"></bean>`
+    <bean id="userService" class="com.shsxt.service.UserService">
+        <constructor-arg name="name" index="0" value="lisi"></constructor-arg>
+        <constructor-arg name="age" index="1" value="17"></constructor-arg>
+        <constructor-arg ref="userDao"></constructor-arg>
+    </bean>-->
+  <!--  <bean id="userDao" class="com.shsxt.factory.StaticFactory" factory-method="createUserDao"></bean>
+    <bean id="userService" class="com.shsxt.service.UserService">
+        <property name="userDao" ref="userDao"></property>
+    </bean>-->
+
+    <!--p标签-->
+   <!-- <bean id="userDao" class="com.shsxt.dao.UserDao"></bean>
+    <bean id="userService" class="com.shsxt.service.UserService"
+          p:userDao-ref="userDao"
+          p:name="wangwu"
+          p:age="199"
+    >
+    </bean>-->
+    <!--<bean id="userDao" class="com.shsxt.dao.UserDao"></bean>
+    <bean id="userService" class="com.shsxt.service.UserService"
+          c:userDao-ref="userDao"
+          c:age="30"
+          c:name="zhaoliu"
+    ></bean>-->
+   <!-- <bean id="userService" class="com.shsxt.service.UserService">
+        <property name="list">
+            <list>
+                <value>河南烩面</value>
+                <value>南方臊子面</value>
+                <value>方便面</value>
+            </list>
+        </property>
+    </bean>-->
+   <!-- <bean id="userService" class="com.shsxt.service.UserService">
+        <property name="set">
+            <set>
+                <value>快乐小馒头</value>
+                <value>北方馒头</value>
+                <value>天津麻花</value>
+                <value>新疆大饼</value>
+            </set>
+        </property>
+    </bean>-->
+    <!--map类型属性注入-->
+    <!--<bean id="userService" class="com.shsxt.service.UserService">
+        <property name="map">
+            <map>
+                <entry>
+                    <key><value>河南</value></key>
+                    <value>云天风景山</value>
+                </entry>
+                <entry>
+                    <key><value>上海</value></key>
+                    <value>宝塔</value>
+                </entry>
+                <entry>
+                    <key><value>北京</value></key>
+                    <value>紫禁城</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+-->
+    <!--properties属性注入-->
+    <bean id="userService" class="com.shsxt.service.UserService">
+        <property name="properties">
+            <props>
+                <prop key="北京">紫禁城</prop>
+                <prop key="上海">东方明珠</prop>
+                <prop key="杭州">西湖</prop>
+            </props>
+        </property>
+    </bean>
+
 </beans>
